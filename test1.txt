@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int [] a = new int[n];
+        int [] b = new int[n];
+        double GPA = 0;
+        int t = 0;
+        for (int i = 0;i<n;i++){
+            a[i] = sc.nextInt();
+            t += a[i];
+        }
+        for (int i = 0;i<n;i++){
+            b[i] = sc.nextInt();
+        }
+        for (int i = 0;i<n;i++){
+            int grade = b[i];
+            if (grade>=90) {
+                GPA += 4.0*a[i];
+            }
+
+            if(grade>=85&&grade <= 89){
+                GPA +=3.7*a[i];
+            }
+            if(grade <= 84 && grade>=82 ){
+                GPA +=3.3*a[i];
+
+            }
+            if(grade <= 81 && grade>=78){
+                GPA +=3.0*a[i];
+            }
+            if(grade <= 77 && grade>=75 ){
+                GPA +=2.7*a[i];
+            }
+            if(grade <= 74 && grade>=72){
+                GPA +=2.3*a[i];
+            }
+            if(grade<=71 && grade>=68 ){
+                GPA +=2.0*a[i];
+            }
+            if( grade<=67 && grade>=64){
+                GPA +=1.5*a[i];
+            }
+            if(grade<=63 && grade>=60){
+                GPA +=1.0*a[i];
+            }
+            if(grade<60){
+                GPA += 0;
+            }
+        }
+        System.out.printf("%.2f",GPA);
+    }
+
+
+
+    public static void main1(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 0, m = 0;
+        while (sc.hasNext()) {
+            n = sc.nextInt();
+            m = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                int t = sc.nextInt();
+                if (t <= m) {
+                    m += t;
+                } else {
+                    m += GO(t, m);
+                }
+            }
+            System.out.println(m);
+        }
+        sc.close();
+    }
+
+    public static int GO(int a, int b) {
+        int tmp;
+        while (b > 0) {
+            tmp = b;
+            b = a % b;
+            a = tmp;
+        }
+        return a;
+    }
+}
